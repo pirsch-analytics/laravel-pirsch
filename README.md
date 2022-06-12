@@ -21,7 +21,8 @@ This package is the official Laravel integration for [Pirsch Analytics](https://
 
 ### Track pageviews
 
-To automatically track pageviews for routes, assign them the `TrackPageview` middleware.
+This package comes with a `TrackPageview` middleware that sends a hit to Pirsch for the page visited in the current request.
+To track visits for certain routes, assign them the `TrackPageview` middleware in your routes file:
 
 ```php
 Route::middleware(Pirsch\Http\Middleware\TrackPageview::class)
