@@ -16,7 +16,7 @@ class TrackPageview
 
     public function terminate(Request $request, Response $response): void
     {
-        if (! config('pirsch.enabled')) {
+        if (! config('pirsch.token')) {
             return;
         }
 
