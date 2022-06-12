@@ -4,7 +4,6 @@ namespace Pirsch\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Http;
 
 class TrackPageview
@@ -14,7 +13,7 @@ class TrackPageview
         return $next($request);
     }
 
-    public function terminate(Request $request, Response $response): void
+    public function terminate(Request $request, mixed $response): void
     {
         if (! config('pirsch.token')) {
             return;
