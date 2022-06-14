@@ -19,10 +19,6 @@ class TrackPageview
             return;
         }
 
-        if (config('pirsch.honor_dnt') && $request->headers->get('DNT')) {
-            return;
-        }
-
         Http::withToken(config('pirsch.token'))
             ->post('https://api.pirsch.io/api/v1/hit', [
                 'hostname' => $request->getHost(),
