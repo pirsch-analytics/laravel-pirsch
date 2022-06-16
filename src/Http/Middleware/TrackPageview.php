@@ -21,7 +21,6 @@ class TrackPageview
 
         Http::withToken(config('pirsch.token'))
             ->post('https://api.pirsch.io/api/v1/hit', [
-                'hostname' => $request->getHost(),
                 'url' => $request->fullUrl(),
                 'ip' => $request->ip(),
                 'cf_connecting_ip' => $request->headers->get('CF-Connecting-IP'),
