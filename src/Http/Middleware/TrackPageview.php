@@ -23,10 +23,6 @@ class TrackPageview
             ->post('https://api.pirsch.io/api/v1/hit', [
                 'url' => $request->fullUrl(),
                 'ip' => $request->ip(),
-                'cf_connecting_ip' => $request->headers->get('CF-Connecting-IP'),
-                'x_forwarded_for' => $request->headers->get('X-Forwarded-For'),
-                'forwarded' => $request->headers->get('Forwarded'),
-                'x_real_ip' => $request->headers->get('X-Real-IP'),
                 'user_agent' => $request->userAgent(),
                 'accept_language' => $request->headers->get('Accept-Language'),
                 'referrer' => $request->headers->get('Referer'),

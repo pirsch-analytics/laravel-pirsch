@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.2] - 2022-07-02
+
+### Changed
+
+- No longer send `cf_connecting_ip`, `x_forwarded_for`, `forwarded` and `x_real_ip` headers.
+
 ## [0.2.1] - 2022-06-16
 
 ### Removed
@@ -34,6 +40,7 @@
 
 - TrackPageview middleware.
 
+[0.2.2]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.2.2
 [0.2.1]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.2.1
 [0.2.0]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.2.0
 [0.1.2]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.1.2
