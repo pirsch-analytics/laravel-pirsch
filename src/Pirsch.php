@@ -15,6 +15,10 @@ class Pirsch
         }
 
         Http::withToken(config('pirsch.token'))
+            ->retry(
+                times: 3,
+                sleepMilliseconds: 100,
+            )
             ->post(
                 url: 'https://api.pirsch.io/api/v1/'.($name === null ? 'hit' : 'event'),
                 data: [

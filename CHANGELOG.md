@@ -6,6 +6,10 @@
 
 - Tracking events.
 
+### Changed
+
+- Retry failed request.
+
 ## [0.2.2] - 2022-07-02
 
 ### Changed
