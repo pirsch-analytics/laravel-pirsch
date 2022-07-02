@@ -13,4 +13,9 @@ class PirschServiceProvider extends PackageServiceProvider
             ->name('laravel-pirsch')
             ->hasConfigFile();
     }
+
+    public function packageRegistered(): void
+    {
+        $this->app->bind('laravel-pirsch', fn () =>  new Pirsch());
+    }
 }

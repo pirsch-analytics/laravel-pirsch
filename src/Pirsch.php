@@ -2,6 +2,34 @@
 
 namespace Pirsch;
 
+use Illuminate\Support\Facades\Http;
+
 class Pirsch
 {
+    public static function track(
+        ?string $name = null,
+        ?array $meta = null,
+    ): void {
+        if (! config('pirsch.token')) {
+            return;
+        }
+
+        Http::withToken(config('pirsch.token'))
+            ->post(
+                url: 'https://api.pirsch.io/api/v1/'.($name === null ? 'hit' : 'event'),
+                data: [
+                    'url' => request()->fullUrl(),
+                    'ip' => request()->ip(),
+                    'user_agent' => request()->userAgent(),
+                    'accept_language' => request()->headers->get('Accept-Language'),
+                    'referrer' => request()->headers->get('Referer'),
+                    ...$name === null
+                        ? []
+                        : [
+                            'event_name' => $name,
+                            'event_meta' => $meta,
+                        ],
+                ],
+            );
+    }
 }

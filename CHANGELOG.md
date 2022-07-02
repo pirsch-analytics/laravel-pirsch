@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0] - 2022-07-02
+
+### Added
+
+- Tracking events.
+
 ## [0.2.2] - 2022-07-02
 
 ### Changed
@@ -40,6 +46,7 @@
 
 - TrackPageview middleware.
 
+[0.3.0]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.3.0
 [0.2.2]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.2.2
 [0.2.1]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.2.1
 [0.2.0]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.2.0

@@ -4,7 +4,7 @@ namespace Pirsch\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use Pirsch\Facades\Pirsch;
 
 class TrackPageview
 {
@@ -15,17 +15,6 @@ class TrackPageview
 
     public function terminate(Request $request, mixed $response): void
     {
-        if (! config('pirsch.token')) {
-            return;
-        }
-
-        Http::withToken(config('pirsch.token'))
-            ->post('https://api.pirsch.io/api/v1/hit', [
-                'url' => $request->fullUrl(),
-                'ip' => $request->ip(),
-                'user_agent' => $request->userAgent(),
-                'accept_language' => $request->headers->get('Accept-Language'),
-                'referrer' => $request->headers->get('Referer'),
-            ]);
+        Pirsch::track();
     }
 }
