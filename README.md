@@ -8,14 +8,14 @@ This package is the official Laravel integration for [Pirsch Analytics](https://
 ## Installation
 
 1. Install this package.
-    ```bash
-    composer require pirsch-analytics/laravel-pirsch
-    ```
+   ```bash
+   composer require pirsch-analytics/laravel-pirsch
+   ```
 2. Set the `PIRSCH_TOKEN` environment variable to your Pirsch access token. Leave it empty in non-production environments to disable tracking.
 3. Optionally publish the configuration file.
-    ```bash
-    php artisan vendor:publish --tag="pirsch-config"
-    ```
+   ```bash
+   php artisan vendor:publish --tag="pirsch-config"
+   ```
 
 ## Usage
 
