@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.1] - 2022-07-02
+
+### Changed
+
+- Always send request after response.
+
 ## [0.3.0] - 2022-07-02
 
 ### Added
@@ -50,6 +56,7 @@
 
 - TrackPageview middleware.
 
+[0.3.1]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.3.1
 [0.3.0]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.3.0
 [0.2.2]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.2.2
 [0.2.1]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.2.1

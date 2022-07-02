@@ -10,11 +10,8 @@ class TrackPageview
 {
     public function handle(Request $request, Closure $next): mixed
     {
-        return $next($request);
-    }
-
-    public function terminate(Request $request, mixed $response): void
-    {
         Pirsch::track();
+
+        return $next($request);
     }
 }
