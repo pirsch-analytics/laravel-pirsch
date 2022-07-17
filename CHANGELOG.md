@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.0] - 2022-07-17
+
+### Changed
+
+- Ignore redirects in middleware.
+
 ## [0.3.2] - 2022-07-17
 
 ### Fixed
