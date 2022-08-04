@@ -7,15 +7,11 @@ This package is the official Laravel integration for [Pirsch Analytics](https://
 
 ## Installation
 
-1. Install this package.
+1. Install this package:
    ```bash
    composer require pirsch-analytics/laravel-pirsch
    ```
 2. Set the `PIRSCH_TOKEN` environment variable to your Pirsch access token. Leave it empty in non-production environments to disable tracking.
-3. Optionally publish the configuration file.
-   ```bash
-   php artisan vendor:publish --tag="pirsch-config"
-   ```
 
 ## Usage
 
@@ -24,20 +20,23 @@ This package is the official Laravel integration for [Pirsch Analytics](https://
 #### Automatically
 
 This package comes with a `TrackPageview` middleware that allows you to track pageviews automatically.
-Assign the middleware to routes for which you want to track pageviews on every request.
+Apply the middleware to your web routes by adding it to the `web` key of the `$middlewareGroups` property in your `app/Http/Kernel.php` class:
 
 ```php
-use Illuminate\Support\Facades\Route;
-use Pirsch\Http\Middleware\TrackPageview;
+protected $middlewareGroups = [
+    'web' => [
+        // ...
+        \Pirsch\Http\Middleware\TrackPageview::class,
+    ],
 
-Route::get('/', fn () => view('welcome'))
-    ->middleware(TrackPageview::class);
+    // ...
+];
 ```
 
 #### Manually
 
 If you want to manually track pageviews instead, you can use the `Pirsch::track()` method.
-Calling this method without any arguments will track a pageview for the current HTTP request.
+Calling this method without any arguments will track a pageview for the current HTTP request:
 
 ```php
 use Pirsch\Facades\Pirsch;
@@ -48,7 +47,7 @@ Pirsch::track();
 ### Track events
 
 Pirsch allows you to [track custom events](https://docs.pirsch.io/dashboard/events) in order to measure additional information.
-You can use the `Pirsch::track()` method with a name and optional metadata to track an event.
+You can use the `Pirsch::track()` method with a name and optional metadata to track an event:
 
 ```php
 use Pirsch\Facades\Pirsch;
