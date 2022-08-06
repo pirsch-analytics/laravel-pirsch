@@ -11,7 +11,12 @@ This package is the official Laravel integration for [Pirsch Analytics](https://
    ```bash
    composer require pirsch-analytics/laravel-pirsch
    ```
-2. Set the `PIRSCH_TOKEN` environment variable to your Pirsch access token. Leave it empty in non-production environments to disable tracking.
+2. Add the Pirsch access token to your `.env` file. Leave it empty in non-production environments to disable tracking:
+   ```bash
+   # ...
+
+   PIRSCH_TOKEN=pa_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   ```
 
 ## Usage
 
