@@ -20,6 +20,10 @@ class TrackPageview
             return;
         }
 
+        if ($request->hasHeader('X-Livewire')) {
+            return;
+        }
+
         Pirsch::track();
     }
 }

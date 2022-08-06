@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.1] - 2022-08-06
+
+### Fixed
+
+- Ignore Livewire requests in middleware.
+
 ## [0.4.0] - 2022-07-17
 
 ### Changed
@@ -68,6 +74,8 @@
 
 - TrackPageview middleware.
 
+[0.4.1]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.1
+[0.4.0]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.0
 [0.3.2]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.3.2
 [0.3.1]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.3.1
 [0.3.0]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.3.0
