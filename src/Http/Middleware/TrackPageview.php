@@ -24,6 +24,10 @@ class TrackPageview
             return;
         }
 
+        if (str_starts_with($request->route()->uri, 'telescope/')) {
+            return;
+        }
+
         Pirsch::track();
     }
 }

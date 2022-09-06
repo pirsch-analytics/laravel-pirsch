@@ -26,8 +26,8 @@ class Pirsch
                         'url' => request()->fullUrl(),
                         'ip' => request()->ip(),
                         'user_agent' => request()->userAgent(),
-                        'accept_language' => request()->headers->get('Accept-Language'),
-                        'referrer' => request()->headers->get('Referer'),
+                        'accept_language' => request()->header('Accept-Language'),
+                        'referrer' => request()->header('Referer'),
                         ...$name === null
                             ? []
                             : [
