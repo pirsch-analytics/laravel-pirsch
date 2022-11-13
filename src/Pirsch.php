@@ -19,6 +19,7 @@ class Pirsch
                 ->retry(
                     times: 3,
                     sleepMilliseconds: 100,
+                    throw: false,
                 )
                 ->post(
                     url: 'https://api.pirsch.io/api/v1/'.($name === null ? 'hit' : 'event'),
