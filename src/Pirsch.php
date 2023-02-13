@@ -2,6 +2,7 @@
 
 namespace Pirsch;
 
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
 
 class Pirsch
@@ -15,28 +16,31 @@ class Pirsch
                 return;
             }
 
-            Http::withToken(config('pirsch.token'))
-                ->retry(
-                    times: 3,
-                    sleepMilliseconds: 100,
-                    throw: false,
-                )
-                ->post(
-                    url: 'https://api.pirsch.io/api/v1/'.($name === null ? 'hit' : 'event'),
-                    data: [
-                        'url' => request()->fullUrl(),
-                        'ip' => request()->ip(),
-                        'user_agent' => request()->userAgent(),
-                        'accept_language' => request()->header('Accept-Language'),
-                        'referrer' => request()->header('Referer'),
-                        ...$name === null
-                            ? []
-                            : [
-                                'event_name' => $name,
-                                'event_meta' => $meta,
-                            ],
-                    ],
-                );
+            try {
+                Http::withToken(config('pirsch.token'))
+                    ->retry(
+                        times: 3,
+                        sleepMilliseconds: 100,
+                        throw: false,
+                    )
+                    ->post(
+                        url: 'https://api.pirsch.io/api/v1/'.($name === null ? 'hit' : 'event'),
+                        data: [
+                            'url' => request()->fullUrl(),
+                            'ip' => request()->ip(),
+                            'user_agent' => request()->userAgent(),
+                            'accept_language' => request()->header('Accept-Language'),
+                            'referrer' => request()->header('Referer'),
+                            ...$name === null
+                                ? []
+                                : [
+                                    'event_name' => $name,
+                                    'event_meta' => $meta,
+                                ],
+                        ],
+                    );
+            } catch (ConnectionException) {
+            }
         });
     }
 }

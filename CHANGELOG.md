@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.4] - 2023-02-13
+
+### Fixed
+
+- Catch `ConnectionException`.
+
 ## [0.4.3] - 2022-11-13
 
 ### Fixed
@@ -86,6 +92,7 @@
 
 - TrackPageview middleware.
 
+[0.4.4]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.4
 [0.4.3]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.3
 [0.4.2]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.2
 [0.4.1]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.1
