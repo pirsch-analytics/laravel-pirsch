@@ -1,7 +1,7 @@
 [![Packagist Version](https://img.shields.io/packagist/v/pirsch-analytics/laravel-pirsch)](https://packagist.org/packages/pirsch-analytics/laravel-pirsch)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/pirsch-analytics/laravel-pirsch)](https://packagist.org/packages/pirsch-analytics/laravel-pirsch/stats)
 
-# Laravel Pirsch
+# Pirsch for Laravel
 
 This package is the official Laravel integration for [Pirsch Analytics](https://pirsch.io).
 
