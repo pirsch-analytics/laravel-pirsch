@@ -18,12 +18,7 @@ class Pirsch
 
             try {
                 Http::withToken(config('pirsch.token'))
-                    ->connectTimeout(0.5)
-                    ->retry(
-                        times: 3,
-                        sleepMilliseconds: 100,
-                        throw: false,
-                    )
+                    ->timeout(config('pirsch.timeout'))
                     ->post(
                         url: 'https://api.pirsch.io/api/v1/'.($name === null ? 'hit' : 'event'),
                         data: [
