@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.6] - 2023-04-08
+
+### Changed
+
+- Add timeout of 5 seconds.
+
 ## [0.4.5] - 2023-02-14
 
 ### Added
@@ -98,6 +104,7 @@
 
 - TrackPageview middleware.
 
+[0.4.6]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.6
 [0.4.5]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.5
 [0.4.4]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.4
 [0.4.3]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.3
