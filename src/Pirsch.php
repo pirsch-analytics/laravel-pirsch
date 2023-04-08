@@ -18,7 +18,7 @@ class Pirsch
 
             try {
                 Http::withToken(config('pirsch.token'))
-                    ->timeout(config('pirsch.timeout'))
+                    ->timeout(5)
                     ->retry(
                         times: 3,
                         sleepMilliseconds: 100,
