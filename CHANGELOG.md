@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.7] - 2023-08-02
+
+### Changed
+
+- Use regular middleware.
+
 ## [0.4.6] - 2023-04-08
 
 ### Changed
@@ -104,6 +110,7 @@
 
 - TrackPageview middleware.
 
+[0.4.7]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.7
 [0.4.6]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.6
 [0.4.5]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.5
 [0.4.4]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.4

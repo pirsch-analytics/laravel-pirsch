@@ -11,23 +11,22 @@ class TrackPageview
 {
     public function handle(Request $request, Closure $next): mixed
     {
-        return $next($request);
-    }
+        $response = $next($request);
 
-    public function terminate(Request $request, mixed $response): void
-    {
         if ($response instanceof RedirectResponse) {
-            return;
+            return $response;
         }
 
         if ($request->hasHeader('X-Livewire')) {
-            return;
+            return $response;
         }
 
         if (str_starts_with($request->route()->uri, 'telescope/')) {
-            return;
+            return $response;
         }
 
         Pirsch::track();
+
+        return $response;
     }
 }
