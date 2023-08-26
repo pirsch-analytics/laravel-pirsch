@@ -25,6 +25,10 @@ class TrackPageview
             return $response;
         }
 
+        if (str_starts_with($request->route()->uri, 'horizon/')) {
+            return $response;
+        }
+
         Pirsch::track();
 
         return $response;
