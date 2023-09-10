@@ -17,6 +17,10 @@ This package is the official Laravel integration for [Pirsch Analytics](https://
 
    PIRSCH_TOKEN=pa_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
    ```
+3. Publish the Pirsch config file if you wish to exclude specific routes:
+   ```bash
+   artisan vendor:publish --tag pirsch-config
+   ```
 
 ## Usage
 
@@ -25,7 +29,8 @@ This package is the official Laravel integration for [Pirsch Analytics](https://
 #### Automatically
 
 This package comes with a `TrackPageview` middleware that allows you to track pageviews automatically.
-Apply the middleware to your web routes by adding it to the `web` key of the `$middlewareGroups` property in your `app/Http/Kernel.php` class:
+Apply the middleware to your web routes by adding it to the `web` key of the `$middlewareGroups` property in
+your `app/Http/Kernel.php` class:
 
 ```php
 protected $middlewareGroups = [
@@ -51,7 +56,8 @@ Pirsch::track();
 
 ### Track events
 
-Pirsch allows you to [track custom events](https://docs.pirsch.io/dashboard/events) in order to measure additional information.
+Pirsch allows you to [track custom events](https://docs.pirsch.io/dashboard/events) in order to measure additional
+information.
 You can use the `Pirsch::track()` method with a name and optional metadata to track an event:
 
 ```php

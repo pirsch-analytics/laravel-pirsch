@@ -21,12 +21,10 @@ class TrackPageview
             return $response;
         }
 
-        if (str_starts_with($request->route()->uri, 'telescope/')) {
-            return $response;
-        }
-
-        if (str_starts_with($request->route()->uri, 'horizon/')) {
-            return $response;
+        foreach (config('pirsch.excluded_routes') as $route) {
+            if (str_starts_with($request->route()->uri, $route)) {
+                return $response;
+            }
         }
 
         Pirsch::track();
