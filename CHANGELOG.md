@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.8] - 2023-09-22
+
+### Added
+
+- Support client hints.
+
 ## [0.4.7] - 2023-08-02
 
 ### Changed
@@ -110,6 +116,7 @@
 
 - TrackPageview middleware.
 
+[0.4.8]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.8
 [0.4.7]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.7
 [0.4.6]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.6
 [0.4.5]: https://github.com/pirsch-analytics/laravel-pirsch/releases/tag/0.4.5

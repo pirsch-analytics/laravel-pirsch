@@ -31,6 +31,12 @@ class Pirsch
                             'ip' => request()->ip(),
                             'user_agent' => request()->userAgent(),
                             'accept_language' => request()->header('Accept-Language'),
+                            'sec_ch_ua' => request()->header('Sec-CH-UA'),
+                            'sec_ch_ua_mobile' => request()->header('Sec-CH-UA-Mobile'),
+                            'sec_ch_ua_platform' => request()->header('Sec-CH-UA-Platform'),
+                            'sec_ch_ua_platform_version' => request()->header('Sec-CH-UA-Platform-Version'),
+                            'sec_ch_width' => request()->header('Sec-CH-Width'),
+                            'sec_ch_viewport_width' => request()->header('Sec-CH-Viewport-Width'),
                             'referrer' => request()->header('Referer'),
                             ...$name === null
                                 ? []
