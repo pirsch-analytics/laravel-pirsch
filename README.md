@@ -17,6 +17,12 @@ This package is the official Laravel integration for [Pirsch Analytics](https://
 
    PIRSCH_TOKEN=pa_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
    ```
+### How to get your access token
+1. Go to your [Pirsch Intergration settings](https://dashboard.pirsch.io/settings/integration) page.
+2. Make sure that on the top left corner, the correct website/application is selected.
+3. Scroll down to the "Clients" section and press the "Add Client" button.
+4. In the modal that appears select "Access Key (write-only)" as "Type" and create a proper Description.
+5. Press on "Create Client" and copy the generated Client Secret (this is your access token).
 
 ## Usage
 
