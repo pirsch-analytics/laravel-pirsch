@@ -12,17 +12,19 @@ This package is the official Laravel integration for [Pirsch Analytics](https://
    composer require pirsch-analytics/laravel-pirsch
    ```
 2. Add the Pirsch access token to your `.env` file. Leave it empty in non-production environments to disable tracking:
-   ```bash
-   # ...
 
-   PIRSCH_TOKEN=pa_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-   ```
-### How to get your access token
-1. Go to your [Pirsch Intergration settings](https://dashboard.pirsch.io/settings/integration) page.
-2. Make sure that on the top left corner, the correct website/application is selected.
-3. Scroll down to the "Clients" section and press the "Add Client" button.
-4. In the modal that appears select "Access Key (write-only)" as "Type" and create a proper Description.
-5. Press on "Create Client" and copy the generated Client Secret (this is your access token).
+   1. Visit the [Pirsch "Integration" settings page](https://dashboard.pirsch.io/settings/integration).
+   2. Make sure the correct domain is selected in the top left corner of the page.
+   3. Scroll down to the "Clients" section and press the "Add Client" button.
+   4. Select "Access Key (write-only)" as type and enter a description.
+   5. Press the "Create Client" button and copy the generated "Client secret".
+   6. Add the copied token to your `.env` file:
+
+      ```bash
+      # ...
+
+      PIRSCH_TOKEN=pa_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      ```
 
 ## Usage
 
