@@ -40,7 +40,7 @@ it('skips Livewire', function () {
     expect(true)->toBeTrue();
 });
 
-it('skips telescope', function () {
+it('skips Telescope', function () {
     Pirsch::spy();
 
     Route::middleware(TrackPageview::class)
