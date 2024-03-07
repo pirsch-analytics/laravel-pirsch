@@ -4,7 +4,7 @@ use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
 use Pirsch\Facades\Pirsch;
 
-it('can track request', function () {
+it('can track a request', function () {
     config(['pirsch.token' => 'test_token']);
     Http::fake([
         'https://api.pirsch.io/api/v1/hit' => Http::response(),
