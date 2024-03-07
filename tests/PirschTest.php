@@ -13,7 +13,7 @@ it('can track request', function () {
     Pirsch::track();
     $this->get('/');
 
-    Http::assertSent(function (Request $request) {
+    Http::assertSent(function (Request $request): bool {
         expect($request->url())->toBe('https://api.pirsch.io/api/v1/hit');
         expect($request->hasHeader('Authorization', 'Bearer test_token'))->toBeTrue();
         expect($request->data())->toBe([
