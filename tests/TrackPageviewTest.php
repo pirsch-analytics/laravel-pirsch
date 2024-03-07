@@ -28,7 +28,7 @@ it('skips redirects', function () {
     expect(true)->toBeTrue();
 });
 
-it('skips livewire', function () {
+it('skips Livewire', function () {
     Pirsch::spy();
 
     Route::middleware(TrackPageview::class)
