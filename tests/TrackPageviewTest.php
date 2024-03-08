@@ -46,3 +46,14 @@ it('skips Telescope', function () {
 
     Pirsch::shouldNotHaveBeenCalled();
 });
+
+it('skips Horizon', function () {
+    Pirsch::spy();
+
+    Route::middleware(TrackPageview::class)
+        ->get('horizon/test', fn () => 'Hello World');
+
+    $this->get('/horizon/test');
+
+    Pirsch::shouldNotHaveBeenCalled();
+});
