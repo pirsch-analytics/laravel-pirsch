@@ -12,8 +12,6 @@ it('handles request', function () {
         ->get('/', fn () => 'Hello World');
 
     $this->get('/');
-
-    expect(true)->toBeTrue();
 });
 
 it('skips redirects', function () {
@@ -25,7 +23,6 @@ it('skips redirects', function () {
     $this->get('/');
 
     Pirsch::shouldNotHaveBeenCalled();
-    expect(true)->toBeTrue();
 });
 
 it('skips Livewire', function () {
@@ -37,7 +34,6 @@ it('skips Livewire', function () {
     $this->get('/', ['X-Livewire' => 'true']);
 
     Pirsch::shouldNotHaveBeenCalled();
-    expect(true)->toBeTrue();
 });
 
 it('skips Telescope', function () {
@@ -49,5 +45,4 @@ it('skips Telescope', function () {
     $this->get('/telescope/test');
 
     Pirsch::shouldNotHaveBeenCalled();
-    expect(true)->toBeTrue();
 });
