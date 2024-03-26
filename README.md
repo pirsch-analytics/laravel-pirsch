@@ -33,8 +33,22 @@ This package is the official Laravel integration for [Pirsch Analytics](https://
 #### Automatically
 
 This package comes with a `TrackPageview` middleware that allows you to track pageviews automatically.
-Apply the middleware to your web routes by adding it to the `web` key of the `$middlewareGroups` property in your `app/Http/Kernel.php` class:
 
+Apply the middleware to your web routes by adding it to the `web` middleware group within your application's `bootstrap/app.php` file:
+```php
+use Pirsch\Http\Middleware\TrackPageview;
+     
+->withMiddleware(function (Middleware $middleware) {
+    $middleware->web(append: [
+        TrackPageview::class,
+    ]);
+})
+```
+
+<details>
+<summary>For Laravel <= 10.x</summary>
+Add the middleware to the <code>web</code> key of the <code>$middlewareGroups</code> property in your <code>app/Http/Kernel.php</code> class:
+    
 ```php
 protected $middlewareGroups = [
     'web' => [
@@ -45,6 +59,7 @@ protected $middlewareGroups = [
     // ...
 ];
 ```
+</details>
 
 #### Manually
 
@@ -109,8 +124,22 @@ class TrackPageview extends Middleware
 - `except` is an array with all URIs paths taht you want to exclude from tracking.
 - `exceptHeaders` is an array with all Headers that you want to exclude from tracking.
 
-Then replace the `TrackPageview` middleware with this on in your middleware configuration:
+Then replace the `TrackPageview` middleware with this one on your `bootstrap/app.php` middleware configuration:
 
+```php
+use App\Http\Middleware\TrackPageview;
+     
+->withMiddleware(function (Middleware $middleware) {
+    $middleware->web(append: [
+        TrackPageview::class,
+    ]);
+})
+```
+
+<details>
+<summary>For Laravel <= 10.x</summary>
+<code>app/Http/Kernel.php</code> file:
+    
 ```php
 protected $middlewareGroups = [
     'web' => [
