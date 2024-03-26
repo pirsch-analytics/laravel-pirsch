@@ -36,11 +36,9 @@ This package comes with a `TrackPageview` middleware that allows you to track pa
 Apply the middleware to your web routes by appending it in the `withMiddleware` method in your `bootstrap/app.php` file:
 
 ```php
-use Pirsch\Http\Middleware\TrackPageview;
-     
 ->withMiddleware(function (Middleware $middleware) {
     $middleware->web(append: [
-        TrackPageview::class,
+        \Pirsch\Http\Middleware\TrackPageview::class,
     ]);
 })
 ```
@@ -110,12 +108,11 @@ class TrackPageview extends Middleware
 
 Then replace the `TrackPageview` middleware with this one on your `bootstrap/app.php` middleware configuration:
 
-```php
-use App\Http\Middleware\TrackPageview;
-     
-->withMiddleware(function (Middleware $middleware) {
-    $middleware->web(append: [
-        TrackPageview::class,
-    ]);
-})
+```diff
+  ->withMiddleware(function (Middleware $middleware) {
+      $middleware->web(append: [
+-         \Pirsch\Http\Middleware\TrackPageview::class,
++         \App\Http\Middleware\TrackPageview::class,
+      ]);
+  })
 ```
