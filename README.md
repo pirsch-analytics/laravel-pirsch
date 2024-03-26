@@ -33,8 +33,8 @@ This package is the official Laravel integration for [Pirsch Analytics](https://
 #### Automatically
 
 This package comes with a `TrackPageview` middleware that allows you to track pageviews automatically.
+Apply the middleware to your web routes by appending it in the `withMiddleware` method in your `bootstrap/app.php` file:
 
-Apply the middleware to your web routes by adding it to the `web` middleware group within your application's `bootstrap/app.php` file:
 ```php
 use Pirsch\Http\Middleware\TrackPageview;
      
@@ -44,22 +44,6 @@ use Pirsch\Http\Middleware\TrackPageview;
     ]);
 })
 ```
-
-<details>
-<summary>For Laravel <= 10.x</summary>
-Add the middleware to the <code>web</code> key of the <code>$middlewareGroups</code> property in your <code>app/Http/Kernel.php</code> class:
-    
-```php
-protected $middlewareGroups = [
-    'web' => [
-        // ...
-        \Pirsch\Http\Middleware\TrackPageview::class,
-    ],
-
-    // ...
-];
-```
-</details>
 
 #### Manually
 
@@ -134,19 +118,4 @@ use App\Http\Middleware\TrackPageview;
         TrackPageview::class,
     ]);
 })
-```
-
-<details>
-<summary>For Laravel <= 10.x</summary>
-<code>app/Http/Kernel.php</code> file:
-    
-```php
-protected $middlewareGroups = [
-    'web' => [
-        // ...
-        \App\Http\Middleware\TrackPageview::class,
-    ],
-
-    // ...
-];
 ```
