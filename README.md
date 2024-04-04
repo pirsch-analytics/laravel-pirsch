@@ -43,6 +43,18 @@ Apply the middleware to your web routes by appending it in the `withMiddleware` 
 })
 ```
 
+You can also apply the middleware to specific routes or groups:
+
+```php
+use Pirsch\Http\Middleware\TrackPageview;
+
+Route::middleware(TrackPageview::class)->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+});
+```
+
 #### Manually
 
 If you want to manually track pageviews instead, you can use the `Pirsch::track()` method.
@@ -74,7 +86,31 @@ Pirsch::track(
 
 You can configure the `TrackPageview` middleware to exclude specific pages from being tracked.
 
-Create a new middleware like this:
+On a specific rouute, you can exclude pages by adding a `except` property to the middleware class:
+
+```php
+use Pirsch\Http\Middleware\TrackPageview;
+
+Route::middleware(TrackPageview::class.':url/to/exclude/*')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+});
+```
+
+Multiple urls can be excluded by separating them with a comma:
+
+```php
+use Pirsch\Http\Middleware\TrackPageview;
+
+Route::middleware(TrackPageview::class.':url/to/exclude/*,url/to/exclude2/*')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+});
+```
+
+To exclude pages globally, you can create a new middleware that extends the `TrackPageview` middleware and add an `except` property:
 
 ```php
 namespace App\Http\Middleware;
@@ -89,7 +125,7 @@ class TrackPageview extends Middleware
      * @var array<int,string>
      */
     protected array $except = [
-        'url/to/exclude',
+        'url/to/exclude/*',
     ];
 
     /**
