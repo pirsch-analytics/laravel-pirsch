@@ -15,8 +15,8 @@ class TrackPageview
      * @var array<int,string>
      */
     protected array $except = [
-        'telescope',
-        'horizon',
+        'telescope/*',
+        'horizon/*',
     ];
 
     /**
@@ -31,7 +31,7 @@ class TrackPageview
     /**
      * Handle an incoming request.
      */
-    public function handle(Request $request, Closure $next): mixed
+    public function handle(Request $request, Closure $next, string ...$excepts): mixed
     {
         $response = $next($request);
 
@@ -39,7 +39,7 @@ class TrackPageview
             return $response;
         }
 
-        if (! $this->inExceptArray($request) &&
+        if (! $this->inExceptArray($request, $excepts) &&
             ! $this->inExceptHeadersArray($request)
         ) {
             Pirsch::track();
@@ -65,9 +65,9 @@ class TrackPageview
     /**
      * Determine if the request has a URI that should not be tracked.
      */
-    protected function inExceptArray(Request $request): bool
+    protected function inExceptArray(Request $request, array $excepts = null): bool
     {
-        foreach ($this->except as $except) {
+        foreach (empty($excepts) ? $this->except : $excepts as $except) {
             if ($except !== '/') {
                 $except = trim($except, '/');
             }
