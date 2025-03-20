@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.0] - 2025-03-20
+
+### Added
+
+- Improve Middleware except.
 
 ## [0.4.10] - 2025-03-20
 
