@@ -47,6 +47,7 @@ class Pirsch
                         ],
                     );
             } catch (ConnectionException) {
+                // remove error
             }
         });
     }
