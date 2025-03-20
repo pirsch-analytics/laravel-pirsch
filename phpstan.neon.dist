@@ -2,12 +2,10 @@ includes:
     - phpstan-baseline.neon
 
 parameters:
-    level: 4
     paths:
         - src
-        - config
+    inferPrivatePropertyTypeFromConstructor: true
+    level: 4
     tmpDir: build/phpstan
     checkOctaneCompatibility: true
     checkModelProperties: true
-    checkMissingIterableValueType: false
-
