@@ -65,7 +65,7 @@ class TrackPageview
     /**
      * Determine if the request has a URI that should not be tracked.
      */
-    protected function inExceptArray(Request $request, array $excepts = null): bool
+    protected function inExceptArray(Request $request, ?array $excepts = null): bool
     {
         foreach (empty($excepts) ? $this->except : $excepts as $except) {
             if ($except !== '/') {
