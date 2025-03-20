@@ -43,6 +43,18 @@ Apply the middleware to your web routes by appending it in the `withMiddleware` 
 })
 ```
 
+You can also apply the middleware to specific routes or groups:
+
+```php
+use Pirsch\Http\Middleware\TrackPageview;
+
+Route::middleware(TrackPageview::class)->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+});
+```
+
 #### Manually
 
 If you want to manually track pageviews instead, you can use the `Pirsch::track()` method.
@@ -68,4 +80,75 @@ Pirsch::track(
         'Label' => 'Get started',
     ],
 );
+```
+
+### Filter pages
+
+You can configure the `TrackPageview` middleware to exclude specific pages from being tracked.
+
+On a specific rouute, you can exclude pages by adding a `except` property to the middleware class:
+
+```php
+use Pirsch\Http\Middleware\TrackPageview;
+
+Route::middleware(TrackPageview::class.':url/to/exclude/*')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+});
+```
+
+Multiple urls can be excluded by separating them with a comma:
+
+```php
+use Pirsch\Http\Middleware\TrackPageview;
+
+Route::middleware(TrackPageview::class.':url/to/exclude/*,url/to/exclude2/*')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+});
+```
+
+To exclude pages globally, you can create a new middleware that extends the `TrackPageview` middleware and add an `except` property:
+
+```php
+namespace App\Http\Middleware;
+
+use Pirsch\Http\Middleware\TrackPageview as Middleware;
+
+class TrackPageview extends Middleware
+{
+    /**
+     * The URIs that should be excluded from tracking.
+     *
+     * @var array<int,string>
+     */
+    protected array $except = [
+        'url/to/exclude/*',
+    ];
+
+    /**
+     * The Headers that should be excluded from tracking.
+     *
+     * @var array<int,string>
+     */
+    protected array $exceptHeaders = [
+        'X-ExcludedHeader',
+    ];
+}
+```
+
+- `except` is an array with all URIs paths taht you want to exclude from tracking.
+- `exceptHeaders` is an array with all Headers that you want to exclude from tracking.
+
+Then replace the `TrackPageview` middleware with this one on your `bootstrap/app.php` middleware configuration:
+
+```diff
+  ->withMiddleware(function (Middleware $middleware) {
+      $middleware->web(append: [
+-         \Pirsch\Http\Middleware\TrackPageview::class,
++         \App\Http\Middleware\TrackPageview::class,
+      ]);
+  })
 ```

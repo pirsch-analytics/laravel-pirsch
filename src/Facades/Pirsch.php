@@ -13,6 +13,6 @@ class Pirsch extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'laravel-pirsch';
+        return \Pirsch\Facades\Pirsch::class;
     }
 }

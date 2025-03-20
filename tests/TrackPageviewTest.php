@@ -22,7 +22,7 @@ it('skips redirects', function () {
 
     $this->get('/');
 
-    Pirsch::shouldNotHaveBeenCalled();
+    Pirsch::shouldNotHaveReceived('track');
 });
 
 it('skips Livewire', function () {
@@ -33,16 +33,38 @@ it('skips Livewire', function () {
 
     $this->get('/', ['X-Livewire' => 'true']);
 
-    Pirsch::shouldNotHaveBeenCalled();
+    Pirsch::shouldNotHaveReceived('track');
 });
 
 it('skips Telescope', function () {
     Pirsch::spy();
 
     Route::middleware(TrackPageview::class)
-        ->get('telescope/test', fn () => 'Hello World');
+        ->get('/telescope/test', fn () => 'Hello World');
 
     $this->get('/telescope/test');
 
-    Pirsch::shouldNotHaveBeenCalled();
+    Pirsch::shouldNotHaveReceived('track');
+});
+
+it('skips Horizon', function () {
+    Pirsch::spy();
+
+    Route::middleware(TrackPageview::class)
+        ->get('horizon/test', fn () => 'Hello World');
+
+    $this->get('/horizon/test');
+
+    Pirsch::shouldNotHaveReceived('track');
+});
+
+it('skips parameter except', function () {
+    Pirsch::spy();
+
+    Route::middleware(TrackPageview::class.':myurl/*')
+        ->get('myurl/test', fn () => 'Hello World');
+
+    $this->get('/myurl/test');
+
+    Pirsch::shouldNotHaveReceived('track');
 });
